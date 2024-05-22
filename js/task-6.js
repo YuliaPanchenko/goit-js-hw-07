@@ -26,14 +26,16 @@ btnDestroyElem.addEventListener("click", destroyBoxes);
 
 function createBoxes(amount) {
   destroyBoxes();
+  const arrayElements = [];
   for (let i = 0; i < amount; i++) {
-    const box = document.createElement("div");
-    box.classList.add("box");
-    box.style.backgroundColor = getRandomHexColor();
-    box.style.width = `${30 + i * 10}px`;
-    box.style.height = `${30 + i * 10}px`;
-    boxesContainer.appendChild(box);
+    const color = getRandomHexColor();
+    const width = 30 + i * 10;
+    const height = 30 + i * 10;
+    arrayElements.push(
+      `<div class="box" style="background-color: ${color}; width: ${width}px; height: ${height}px;"></div>`
+    );
   }
+  boxesContainer.innerHTML = arrayElements.join("");
 }
 
 function destroyBoxes() {
